@@ -1,0 +1,64 @@
+{
+  "project": "NutriSmart AI",
+  "model_purpose": "Lifestyle-based obesity risk screening",
+  "model_name": "RandomForestClassifier",
+  "pipeline_type": "Pipeline",
+  "model_source_file": "candidate_model_pipeline.joblib",
+  "final_model_file": "best_model_pipeline.joblib",
+  "features": [
+    "FCVC",
+    "NCP",
+    "CH2O",
+    "FAF",
+    "TUE",
+    "FAVC",
+    "CAEC",
+    "SCC",
+    "CALC",
+    "MTRANS"
+  ],
+  "numeric_features": [
+    "FCVC",
+    "NCP",
+    "CH2O",
+    "FAF",
+    "TUE"
+  ],
+  "categorical_features": [
+    "FAVC",
+    "CAEC",
+    "SCC",
+    "CALC",
+    "MTRANS"
+  ],
+  "target": {
+    "name": "Obesity_Binary",
+    "mapping": {
+      "0": "Non-Obesity",
+      "1": "Obesity"
+    }
+  },
+  "classification_threshold": 0.5,
+  "display_score_formula": "predict_proba(class=1) * 100",
+  "display_risk_bands": {
+    "low": "0 <= score < 40",
+    "medium": "40 <= score < 70",
+    "high": "70 <= score <= 100"
+  },
+  "best_parameters": {
+    "model__max_depth": null,
+    "model__max_features": "sqrt",
+    "model__min_samples_leaf": 1,
+    "model__n_estimators": 400
+  },
+  "test_metrics_file": "model_metrics.json",
+  "python_version": "3.12.10",
+  "scikit_learn_version": "1.9.0",
+  "limitations": [
+    "Hasil bukan diagnosis medis.",
+    "Skor bukan probabilitas klinis yang pasti.",
+    "Dataset bukan populasi Indonesia.",
+    "Sebagian besar dataset bersifat sintetik.",
+    "Model tidak memprediksi kepastian penurunan berat badan."
+  ]
+}
